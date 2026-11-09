@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Customer File Manager — फोटो स्टूडियो का स्मार्ट सॉफ्टवेयर</title>
+<meta name="description" content="हर ग्राहक का अपना फोल्डर, तुरंत खोज, वीडियो और फोटो का साइज़ कम। 15 दिन फ्री Trial, फिर सिर्फ़ ₹499, एक PC, लाइफटाइम।">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root { --navy:#160b30; --navy2:#3a1f72; --gold:#ffc94d; --gold2:#ff8f3c; --pink:#ff4f93; --pink2:#c91e6b; --teal:#1bd6c4; --teal2:#0f9e95; --ink:#1c1340; --mute:#5c5878; --line:#e4defa; --bg:#f6f4fc; --green:#128c3e; --red:#b71c1c }
+* { box-sizing:border-box }
+html { scroll-behavior:smooth }
+body { margin:0; font-family:'Mukta','Nirmala UI','Segoe UI',sans-serif; color:var(--ink); background:radial-gradient(1200px 700px at 50% 0%,#1d1040 0,#0a0618 55%,#05040d 100%); font-size:19px; line-height:1.5 }
+section { background:#fff }
+.alt { background:var(--bg) }
+.hero, .price { color:#fff }
+.hero-card { margin:0 }
+.strip { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:18px; padding-top:16px; border-top:1px solid #ffffff22 }
+.strip div { display:flex; align-items:center; gap:10px; background:#ffffff0f; border:1px solid #ffffff1c; border-radius:12px; padding:10px 16px; flex:1 1 170px; min-width:150px }
+.strip .ic { font-size:22px }
+.strip b { display:block; font-size:15px; color:#fff } .strip span { font-size:13px; color:#c9c6e6 }
+.stats { display:flex; flex-wrap:wrap; gap:14px; justify-content:space-between; margin-top:10px; padding:10px 4px 0 }
+.stats div { text-align:center; flex:1 1 110px }
+.stats b { display:block; font-size:clamp(22px,2.6vw,30px); background:linear-gradient(90deg,var(--gold),var(--pink)); -webkit-background-clip:text; background-clip:text; color:transparent }
+.stats span { font-size:14px; color:#c9c6e6 }
+@media (max-width:700px) { .strip, .stats { justify-content:center } }
+img { display:block; max-width:100%; height:auto }
+a { color:inherit }
+.wrap { width:min(1320px,100%); margin:0 auto; padding:0 28px }
+header { background:transparent; color:#fff }
+.bar { display:flex; align-items:center; gap:18px; padding:11px 28px; width:min(1320px,100%); margin:0 auto }
+.logo { font-weight:800; font-size:22px; color:var(--gold); text-decoration:none; margin-right:auto; white-space:nowrap }
+nav a { color:#fff; text-decoration:none; font-weight:600; margin-left:18px }
+.btn { display:inline-block; padding:13px 26px; border-radius:12px; font-weight:800; font-size:21px; text-decoration:none; text-align:center; border:0; cursor:pointer; transition:transform .15s,box-shadow .15s }
+.btn:hover { transform:translateY(-2px) }
+.gold { background:linear-gradient(100deg,var(--gold),var(--gold2)); color:var(--navy); box-shadow:0 8px 22px #ff8f3c55 }
+.wa { background:var(--green); color:#fff }
+.hero { background:radial-gradient(760px 480px at 88% 8%,#ff4f9355 0,transparent 60%),radial-gradient(620px 420px at 6% 92%,#1bd6c455 0,transparent 60%),radial-gradient(1000px 620px at 74% 28%,#6a3fc9 0,var(--navy2) 42%,var(--navy) 100%); color:#fff; padding:26px 0 28px }
+.hgrid { display:grid; grid-template-columns:1fr 1.15fr; gap:42px; align-items:center }
+.pill { display:inline-block; border:2px solid var(--gold); color:var(--gold); border-radius:30px; padding:2px 16px; font-weight:600; font-size:17px }
+h1 { font-size:clamp(46px,7vw,82px); line-height:1.04; margin:14px 0 8px; font-weight:800; letter-spacing:-0.5px }
+h1 em { font-style:normal; color:#ffd872 }
+.sub { font-size:23px; margin:0 0 24px; color:#e8ecff }
+.cta { display:flex; flex-wrap:wrap; gap:12px }
+.note { font-size:16px; color:#cfd7ef; margin-top:12px }
+.lap3d-wrap { perspective:1600px; position:relative }
+.lap3d-wrap::before { content:""; position:absolute; inset:-30px; border-radius:50%; background:radial-gradient(circle,#ff8f3c33 0,#1bd6c422 40%,transparent 70%); filter:blur(6px); z-index:-1 }
+.lap3d { transform:rotateX(6deg); transform-origin:bottom center }
+.lap3d .screen { position:relative; background:#0a0e1f; border-radius:16px 16px 5px 5px; padding:16px 16px 10px; box-shadow:0 40px 70px -16px #000a, 0 0 0 2px #2a3155 inset }
+.lap3d .screen::before { content:""; position:absolute; top:6px; left:50%; transform:translateX(-50%); width:7px; height:7px; border-radius:50%; background:#333a5c }
+.lap3d .screen img { display:block; width:100%; border-radius:4px }
+.lap3d .base { height:18px; margin:0 -16px; background:linear-gradient(#eef0f7,#aab0c2); border-radius:0 0 10px 10px; position:relative; box-shadow:0 14px 18px -8px #0007 }
+.lap3d .base::before { content:""; position:absolute; left:50%; top:0; transform:translateX(-50%); width:84px; height:7px; background:#9199b0; border-radius:0 0 7px 7px }
+.lap3d .floor { width:82%; height:22px; margin:8px auto 0; background:radial-gradient(ellipse at center,#00000055,transparent 72%) }
+section { padding:26px 0 }
+h2 { font-size:clamp(30px,4vw,42px); text-align:center; margin:0 0 10px; color:var(--navy); line-height:1.2; position:relative }
+h2::after { content:""; display:block; width:64px; height:5px; margin:12px auto 0; border-radius:4px; background:linear-gradient(90deg,var(--gold),var(--pink),var(--teal)) }
+.price h2::after, .hero h2::after { background:linear-gradient(90deg,var(--gold),#fff) }
+.lead { text-align:center; color:var(--mute); margin:0 0 14px; font-size:20px }
+.three { display:grid; grid-template-columns:repeat(3,1fr); gap:18px }
+.big { background:linear-gradient(150deg,var(--gold),var(--gold2)); border-radius:18px; padding:24px; color:var(--navy); box-shadow:0 14px 30px -12px #0003 }
+.big .i { font-size:46px; line-height:1 } .big h3 { font-size:29px; margin:8px 0 2px; line-height:1.2 } .big p { margin:0; font-weight:600; color:#7a1010 }
+.three .big:nth-child(2) { background:linear-gradient(150deg,var(--pink),var(--pink2)); color:#fff }
+.three .big:nth-child(2) p { color:#ffd9e8 }
+.three .big:nth-child(3) { background:linear-gradient(150deg,var(--teal),var(--teal2)); color:#fff }
+.three .big:nth-child(3) p { color:#d7fff9 }
+.big { transition:transform .15s,box-shadow .15s } .big:hover { transform:translateY(-4px) }
+.alt { background:var(--bg) }
+.grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px }
+.f { background:#fff; border:1px solid var(--line); border-radius:14px; padding:18px; border-top:4px solid var(--gold2); transition:transform .15s,box-shadow .15s } .f:hover { transform:translateY(-3px); box-shadow:0 14px 28px -14px #0003 } .f .i { font-size:32px; line-height:1.1 } .f b { display:block; font-size:21px; color:var(--navy); line-height:1.25; margin-top:4px } .f span { font-size:17px; color:var(--mute); display:block; line-height:1.35 }
+.grid .f:nth-child(3n+2) { border-top-color:var(--pink2) }
+.grid .f:nth-child(3n+3) { border-top-color:var(--teal2) }
+.pain { display:grid; gap:10px; max-width:760px; margin:28px auto 0 }
+.p { display:grid; grid-template-columns:1fr 28px 1fr; align-items:center; background:var(--navy); color:#fff; border-radius:12px; padding:11px 18px; font-weight:600 } .p i { font-style:normal; color:var(--gold); text-align:center } .p span:last-child { color:#b8f5c8 } .p span:first-child { color:#ffc9c9 }
+.shots { display:grid; grid-template-columns:repeat(3,1fr); gap:18px }
+.shots figure { margin:0; border:1px solid var(--line); border-radius:14px; overflow:hidden; background:#fff; box-shadow:0 10px 26px -16px #0004; transition:transform .15s } .shots figure:hover { transform:translateY(-4px) } .shots img { width:100%; aspect-ratio:16/10; object-fit:cover; object-position:top left } figcaption { padding:10px 14px; font-weight:800; color:var(--navy); font-size:20px; border-top:3px solid var(--gold2) }
+.steps { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; counter-reset:s }
+.s { background:#fff; border:2px solid var(--gold); border-radius:14px; padding:44px 12px 14px; text-align:center; position:relative; font-weight:600; line-height:1.3; font-size:18px; counter-increment:s } .s::before { content:counter(s); position:absolute; top:10px; left:50%; transform:translateX(-50%); width:32px; height:32px; line-height:32px; border-radius:50%; background:var(--navy); color:var(--gold); font-weight:800 }
+.warn { display:grid; grid-template-columns:1fr 1fr; gap:26px; align-items:center; max-width:940px; margin:0 auto }
+.ss { background:#0a64ad; color:#fff; padding:22px; border-radius:6px; font-family:'Segoe UI',sans-serif; font-size:16px; box-shadow:0 8px 24px #0003 } .ss h4 { font-size:25px; font-weight:400; margin:0 0 10px } .ss u { color:#fff } .ss .row { text-align:right; margin-top:30px } .ss .b { display:inline-block; border:2px solid #fff; padding:3px 16px; margin-left:6px }
+.ring { outline:3px solid var(--gold); outline-offset:3px; border-radius:2px } .tag { font-size:13px; opacity:.85; margin-top:10px }
+.price { background:radial-gradient(640px 400px at 10% 100%,#1bd6c444 0,transparent 60%),radial-gradient(640px 400px at 90% 0%,#ff4f9344 0,transparent 60%),radial-gradient(900px 500px at 50% 0%,#6a3fc9 0,var(--navy2) 42%,var(--navy) 100%); color:#fff; text-align:center }
+.price h2 { color:#fff }
+.pbox { display:grid; grid-template-columns:1fr 1fr; max-width:720px; margin:20px auto 24px; border-radius:18px; overflow:hidden; border:3px solid var(--gold) }
+.pbox div { padding:22px 10px } .free { background:#fff; color:var(--navy) } .paid { background:linear-gradient(135deg,var(--pink2),var(--red)) } .pbox b { display:block; font-size:clamp(38px,6vw,58px); line-height:1.05 } .paid b { color:var(--gold) } .pbox span { font-weight:600 }
+.guide { display:grid; grid-template-columns:1fr 1.5fr; gap:30px; align-items:center } .pages { display:grid; grid-template-columns:repeat(3,1fr); gap:10px } .pages img { border-radius:8px; border:1px solid var(--line); box-shadow:0 3px 10px #0002 }
+.vid { margin-top:18px; background:var(--navy); color:var(--gold); text-align:center; font-size:26px; font-weight:800; border-radius:14px; padding:44px 16px }
+details { background:#fff; border:1px solid var(--line); border-left:4px solid var(--pink2); border-radius:12px; padding:13px 18px; margin:10px auto; max-width:820px; transition:border-color .15s } details[open] { border-left-color:var(--teal2) } summary { font-weight:800; cursor:pointer; color:var(--navy) } details p { margin:8px 0 0; color:var(--mute) }
+footer { background:radial-gradient(640px 360px at 85% -10%,#ff4f9333 0,transparent 60%),radial-gradient(640px 360px at 15% 110%,#1bd6c433 0,transparent 60%),var(--navy); color:#fff; padding:34px 0; border-top:3px solid var(--gold) } .fgrid { display:flex; gap:20px; align-items:center; flex-wrap:wrap } .fgrid img { width:92px; height:92px; border-radius:50%; border:3px solid var(--gold); box-shadow:0 0 0 4px #ffffff22 } .fgrid b { font-size:26px; color:var(--gold) } .fgrid .btn { margin-left:auto } .copy { text-align:center; opacity:.7; font-size:15px; margin-top:20px }
+.float { position:fixed; right:16px; bottom:16px; z-index:8; background:var(--green); color:#fff; border-radius:30px; padding:10px 18px; font-weight:800; text-decoration:none; box-shadow:0 4px 14px #0005 }
+@media (max-width:860px) {
+  nav { display:none }
+  .hgrid, .three, .warn, .guide { grid-template-columns:1fr }
+  .grid { grid-template-columns:repeat(2,1fr) } .shots { grid-template-columns:1fr } .steps { grid-template-columns:1fr 1fr }
+  .hero { padding:28px 0 32px }
+  .fgrid .btn { margin-left:0; width:100% }
+  .cta .btn { flex:1 1 100% }
+}
+@media (max-width:430px) { .p { grid-template-columns:1fr; text-align:center; gap:0 } .p i { transform:rotate(90deg) } .logo { font-size:19px } header .btn { padding:7px 12px; font-size:16px } }
+</style>
+</head>
+<body>
+<div class="hero-card">
+<header><div class="bar">
+  <a class="logo" href="#top">◆ Customer File Manager</a>
+  <nav><a href="#features">विशेषताएँ</a><a href="#start">शुरुआत कैसे करें</a><a href="#guide">गाइड</a></nav>
+  <a class="btn gold js-dl" style="padding:7px 16px;font-size:17px" href="#start">Download</a>
+</div></header>
+
+<div class="hero" id="top"><div class="wrap hgrid">
+  <div>
+    <span class="pill">📸 फोटो स्टूडियो के लिए स्मार्ट सॉफ्टवेयर</span>
+    <h1>फोल्डर ढूँढना <em>बंद,</em><br><em>काम शुरू!</em></h1>
+    <p class="sub">हर ग्राहक की फोटो-वीडियो एक जगह। नाम लिखो, सेकंड में सामने।</p>
+    <div class="cta">
+      <a class="btn gold js-dl" href="#start"><span class="js-dl-text">⬇ 15 दिन फ्री डाउनलोड करें</span></a>
+      <a class="btn wa" href="https://wa.me/916200365280?text=नमस्ते Shivam, मुझे Customer File Manager के बारे में जानना है।">💬 WhatsApp करें</a>
+    </div>
+    <p class="note">🎁 15 दिन बिल्कुल फ्री, फिर सिर्फ़ ₹499 • एक PC, लाइफटाइम • Windows के लिए</p>
+  </div>
+  <div class="lap3d-wrap"><div class="lap3d">
+    <div class="screen"><img src="assets/main.jpg" alt="Customer File Manager का मुख्य व्यू"></div>
+    <div class="base"></div>
+    <div class="floor"></div>
+  </div></div>
+</div>
+<div class="wrap">
+  <div class="strip">
+    <div><span class="ic">⚡</span><div><b>तेज़ रफ़्तार</b><span>सेकंड में फोल्डर</span></div></div>
+    <div><span class="ic">🔒</span><div><b>सुरक्षित डेटा</b><span>असली फाइल कभी नहीं बदलती</span></div></div>
+    <div><span class="ic">⏱</span><div><b>घंटों की बचत</b><span>हर हफ़्ते</span></div></div>
+    <div><span class="ic">🏢</span><div><b>हर साइज़ स्टूडियो</b><span>छोटा हो या बड़ा</span></div></div>
+    <div><span class="ic">🛠</span><div><b>झटपट शुरू</b><span>कुछ ही मिनट में</span></div></div>
+  </div>
+  <div class="stats">
+    <div><b>15 दिन</b><span>फ्री ट्रायल</span></div>
+    <div><b>₹499</b><span>लाइफटाइम, एक PC</span></div>
+    <div><b>100%</b><span>असली फाइल सुरक्षित</span></div>
+    <div><b>WhatsApp</b><span>सीधा सपोर्ट</span></div>
+  </div>
+</div>
+</div></div>
+
+<section style="background:linear-gradient(180deg,#fff 0%,#fff6e6 100%)"><div class="wrap">
+  <h2>रोज़ की यह 3 परेशानी, अब खत्म</h2><p class="lead">स्टूडियो वालों की सबसे बड़ी सिरदर्दी, एक सॉफ्टवेयर में हल।</p>
+  <div class="pain">
+    <div class="p"><span>❌ घंटों फोल्डर ढूँढना</span><i>➜</i><span>✅ सेकंड में ग्राहक मिले</span></div>
+    <div class="p"><span>❌ भरी हुई हार्ड ड्राइव</span><i>➜</i><span>✅ वीडियो-फोटो में आधी जगह</span></div>
+    <div class="p"><span>❌ ग्राहक के सामने फोल्डर ढूँढना</span><i>➜</i><span>✅ एक क्लिक में फोल्डर खुले</span></div>
+  </div>
+</div></section>
+
+<section class="alt" id="features" style="background:linear-gradient(180deg,#eafffb 0%,#fff 100%)"><div class="wrap">
+  <span class="pill" style="display:block;width:fit-content;margin:0 auto 10px;border-color:var(--navy2);color:var(--navy2)">SOFTWARE FEATURES</span>
+  <h2>इसमें क्या-क्या मिलेगा</h2><p class="lead">एक ही सॉफ्टवेयर में पूरा स्टूडियो।</p>
+  <div class="grid">
+    <div class="f"><div class="i">📂</div><b>श्रेणी के हिसाब से फोल्डर</b><span>एल्बम, मिक्सिंग, रॉ फोटो, अपनी श्रेणी भी</span></div>
+    <div class="f"><div class="i">🔍</div><b>तुरंत खोज</b><span>नाम या फोन का एक अक्षर लिखो</span></div>
+    <div class="f"><div class="i">🖐</div><b>खींचो और छोड़ो</b><span>फोल्डर श्रेणी के बटन पर छोड़ो</span></div>
+    <div class="f"><div class="i">💽</div><b>सारी ड्राइव एक लिस्ट में</b><span>किस ड्राइव में कौन ग्राहक, साफ़ दिखे</span></div>
+    <div class="f"><div class="i">✅</div><b>जाँच के साथ कॉपी</b><span>हर फाइल कॉपी के बाद जाँची जाती है</span></div>
+    <div class="f"><div class="i">💾</div><b>पेन ड्राइव में दो</b><span>ग्राहक चुनो, बटन दबाओ</span></div>
+    <div class="f"><div class="i">🗂</div><b>रोज़ अपने-आप बैकअप</b><span>ग्राहक लिस्ट और सेटिंग सुरक्षित</span></div>
+    <div class="f"><div class="i">📋</div><b>कई ग्राहक एक साथ</b><span>कतार लगाओ, एक-एक करके काम होगा</span></div>
+  </div>
+</div></section>
+
+<section style="background:linear-gradient(180deg,#fff 0%,#ffeef5 100%)"><div class="wrap">
+  <h2>देखिए कैसा दिखता है</h2><p class="lead">तस्वीरों में नाम उदाहरण के लिए हैं।</p>
+  <div class="shots">
+    <figure><img src="assets/main.jpg" loading="lazy" alt="मुख्य खिड़की"><figcaption>📂 कस्टमर मैनेजर</figcaption></figure>
+    <figure><img src="assets/video.jpg" loading="lazy" alt="वीडियो कंप्रेसर"><figcaption>🎬 वीडियो कंप्रेसर</figcaption></figure>
+    <figure><img src="assets/photo.jpg" loading="lazy" alt="फोटो कंप्रेसर"><figcaption>🖼 फोटो कंप्रेसर</figcaption></figure>
+  </div>
+  <!-- वीडियो बन जाए तो इस div की जगह YouTube का embed code या <video> डालें -->
+  <div class="vid">▶ 30 सेकंड का वीडियो जल्द आ रहा है</div>
+</div></section>
+
+<section class="alt" id="start" style="background:linear-gradient(180deg,#f1ecff 0%,#fff 100%)"><div class="wrap">
+  <h2>शुरुआत सिर्फ़ 5 आसान चरणों में</h2><p class="lead">डाउनलोड से सक्रियण तक, पूरी प्रक्रिया कुछ ही मिनटों में।</p>
+  <div class="steps">
+    <div class="s">सॉफ्टवेयर डाउनलोड करें और खोलें</div>
+    <div class="s">सुरक्षा चेतावनी आए तो More info → Run anyway चुनें (Windows नए सॉफ्टवेयर पर ऐसा सिर्फ़ पहली बार दिखाता है)</div>
+    <div class="s">अपनी जानकारी (नाम, मोबाइल, ईमेल) WhatsApp पर भेजें</div>
+    <div class="s">Shivam की ओर से License फाइल प्राप्त करें</div>
+    <div class="s">License फाइल से सॉफ्टवेयर सक्रिय करें</div>
+  </div>
+  <div style="text-align:center;margin-top:26px"><a class="btn gold js-dl" href="#start"><span class="js-dl-text">⬇ 15 दिन फ्री डाउनलोड करें</span></a></div>
+</div></section>
+
+
+<section id="guide" style="background:linear-gradient(180deg,#fff 0%,#eafffb 100%)"><div class="wrap">
+  <h2>हर काम, तस्वीर के साथ आसान</h2>
+  <p class="lead">कदम 1, 2, 3 में, तस्वीर और निशान के साथ। बच्चा भी देखकर चला ले। पूरी PDF गाइड जल्द आ रही है।</p>
+</div></section>
+
+<section class="alt" style="background:linear-gradient(180deg,#ffeef5 0%,#fff 100%)"><div class="wrap">
+  <h2>आम सवाल</h2><p class="lead">जो लोग अक्सर पूछते हैं।</p>
+  <details><summary>क्या मेरी असली फोटो-वीडियो बदलेंगी?</summary><p>नहीं। छोटी फाइल अलग फोल्डर में बनती है। असली फाइल वैसी ही रहती है।</p></details>
+  <details><summary>Trial के बाद क्या होगा?</summary><p>15 दिन बाद सॉफ्टवेयर पूरी Key माँगेगा। आपकी फोटो-वीडियो सुरक्षित रहेंगी।</p></details>
+  <details><summary>एक Key कितने कंप्यूटर पर चलेगी?</summary><p>एक Key एक कंप्यूटर पर चलती है। दूसरे कंप्यूटर के लिए अलग Key लेनी होगी।</p></details>
+  <details><summary>Windows दोबारा डाला तो?</summary><p>Key उसी कंप्यूटर पर फिर चल जाएगी। दिक्कत हो तो WhatsApp कर लें।</p></details>
+  <details><summary>किस कंप्यूटर पर चलेगा?</summary><p>Windows कंप्यूटर पर। मोबाइल या Mac पर नहीं चलेगा।</p></details>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="fgrid"><img src="assets/dev.jpg" alt="Shivam"><div><b>Shivam</b><br>📞 WhatsApp: 6200365280</div><a class="btn wa" href="https://wa.me/916200365280">💬 बात करें</a></div>
+  <div class="copy">© Customer File Manager • Kohinoor Studio Software</div>
+</div></footer>
+<a class="float" href="https://wa.me/916200365280">💬 WhatsApp</a>
+
+<script>
+  // setup फाइल का लिंक यहाँ डालना है। खाली रहे तो Download बटन WhatsApp पर ले जाते हैं।
+  const DOWNLOAD_URL = "";
+  const ask = "https://wa.me/916200365280?text=" + encodeURIComponent("नमस्ते Shivam, मुझे Customer File Manager का डाउनलोड लिंक चाहिए।");
+  document.querySelectorAll(".js-dl").forEach(a => { a.href = DOWNLOAD_URL || ask; });
+  if (!DOWNLOAD_URL) document.querySelectorAll(".js-dl-text").forEach(s => { s.textContent = "⬇ डाउनलोड जल्द आ रहा है — अभी WhatsApp करें"; });
+</script>
+</body>
+</html>
