@@ -212,7 +212,7 @@ footer { background:radial-gradient(640px 360px at 85% -10%,#ff4f9333 0,transpar
 
 <script>
   // setup फाइल का लिंक यहाँ डालना है। खाली रहे तो Download बटन WhatsApp पर ले जाते हैं।
-  const DOWNLOAD_URL = "";
+  const DOWNLOAD_URL = "https://github.com/kohinoorstudio-shivam/kohinoor-software/releases/latest/download/Customer-File-Manager.zip";
   const ask = "https://wa.me/916200365280?text=" + encodeURIComponent("नमस्ते Shivam, मुझे Customer File Manager का डाउनलोड लिंक चाहिए।");
   document.querySelectorAll(".js-dl").forEach(a => { a.href = DOWNLOAD_URL || ask; });
   if (!DOWNLOAD_URL) document.querySelectorAll(".js-dl-text").forEach(s => { s.textContent = "⬇ डाउनलोड जल्द आ रहा है — अभी WhatsApp करें"; });
